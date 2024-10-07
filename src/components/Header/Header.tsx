@@ -1,28 +1,29 @@
+import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "@assets/icons/museum-logo.svg";
 import { ReactComponent as FavoriteIcon } from "@assets/icons/bookmark.svg";
 import { ReactComponent as HomeIcon } from "@assets/icons/home.svg";
-import { StyledLink, HeaderContainer } from "./styled";
+import styles from "./Header.module.css";
 import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
 
   return (
-    <HeaderContainer>
+    <header className={styles.header}>
       <Logo />
-      <nav>
+      <nav className={styles.nav}>
         {location.pathname !== "/" && (
-          <StyledLink to="/">
+          <Link to="/" className={styles.link}>
             <HomeIcon />
             Home
-          </StyledLink>
+          </Link>
         )}
-        <StyledLink to="/favorites">
+        <Link to="/favorites" className={styles.link}>
           <FavoriteIcon />
           Your favorites
-        </StyledLink>
+        </Link>
       </nav>
-    </HeaderContainer>
+    </header>
   );
 };
 
