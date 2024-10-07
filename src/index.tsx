@@ -2,15 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Layout from "./components/Layout/Layout";
 import PaintingList from "./pages/PaintingList";
 import Favorites from "./pages/Favorites";
 import PaintingDetails from "./pages/PaintingDetails";
+import ErrorBoundaryLayout from "components/ErrorBoundaryLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <ErrorBoundaryLayout />,
     children: [
       { path: "/", element: <PaintingList /> },
       { path: "/favorites", element: <Favorites /> },
