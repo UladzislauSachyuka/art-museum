@@ -1,8 +1,9 @@
-import { ReactComponent as Logo } from "@assets/icons/museum-logo.svg";
+import { ReactComponent as Logo } from "@assets/icons/museum-logo-footer.svg";
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.footer}>
       <Logo />
     </footer>
   );
