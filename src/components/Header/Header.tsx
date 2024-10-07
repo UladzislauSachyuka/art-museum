@@ -1,15 +1,28 @@
-import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "@assets/icons/museum-logo.svg";
+import { ReactComponent as FavoriteIcon } from "@assets/icons/bookmark.svg";
+import { ReactComponent as HomeIcon } from "@assets/icons/home.svg";
+import { StyledLink, HeaderContainer } from "./styled";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+
   return (
-    <header>
+    <HeaderContainer>
       <Logo />
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/favorites">Your favorites</Link>
+        {location.pathname !== "/" && (
+          <StyledLink to="/">
+            <HomeIcon />
+            Home
+          </StyledLink>
+        )}
+        <StyledLink to="/favorites">
+          <FavoriteIcon />
+          Your favorites
+        </StyledLink>
       </nav>
-    </header>
+    </HeaderContainer>
   );
 };
 
