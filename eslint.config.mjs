@@ -43,5 +43,6 @@ export default [...compat.extends(
     rules: {
         "prettier/prettier": "error",
         "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off"
     },
 }];

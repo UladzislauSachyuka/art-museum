@@ -6,4 +6,5 @@
 
 .mainContent {
   flex-grow: 1;
+  background: var(--light-color);
 }
