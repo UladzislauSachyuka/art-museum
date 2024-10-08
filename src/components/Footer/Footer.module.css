@@ -1,7 +1,4 @@
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   padding: 32px 15vw;
   background-color: var(--white-color);
 }
