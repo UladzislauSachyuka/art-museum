@@ -1,0 +1,39 @@
+.paginationContainer {
+  display: flex;
+  margin: 20px 0;
+}
+
+.paginationRoot {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.paginationControl {
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  padding: 10px 16px;
+  border: 1px solid var(--gray-color);
+  background-color: var(--white-color);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+.paginationControl:hover {
+  background-color: #e0f7ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.activeControl {
+  background-color: var(--turquoise-color);
+  color: var(--white-color);
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dots {
+  margin: 0 5px;
+  font-size: 32px; 
+  color: var(--gray-color);
+}
