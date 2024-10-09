@@ -4,7 +4,7 @@ import { ReactComponent as InFavoriteIcon } from "@assets/icons/in-favorite-icon
 import styles from "./PaintingCard.module.css";
 
 interface PaintingCardProps {
-  id: string;
+  id: number;
   imageUrl: string;
   title: string;
   artist: string;
@@ -33,7 +33,7 @@ const PaintingCard: React.FC<PaintingCardProps> = ({
     let favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
 
     if (isFavorite) {
-      favorites = favorites.filter((favoriteId: string) => favoriteId !== id);
+      favorites = favorites.filter((favoriteId: number) => favoriteId !== id);
     } else {
       favorites.push(id);
     }
@@ -47,7 +47,7 @@ const PaintingCard: React.FC<PaintingCardProps> = ({
       <img src={imageUrl} alt={title} className={styles.paintingImage} />
       <div className={styles.paintingInfo}>
         <h4 className={styles.paintingTitle}>{title}</h4>
-        <p className={styles.paintingArtist}>{artist || "Unknown"}</p>
+        <p className={styles.paintingArtist}>{artist}</p>
         <span className={styles.paintingLabel}>{label}</span>
       </div>
       <div className={styles.icon} onClick={handleFavoriteClick}>
