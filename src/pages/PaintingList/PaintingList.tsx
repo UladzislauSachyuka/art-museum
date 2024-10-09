@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PaintingCard from "components/PaintingCard";
+import Loader from "components/Loader";
 import { PAINTINGS_PER_PAGE } from "constants/constants";
 import styles from "./PaintingList.module.css";
 
@@ -52,7 +53,7 @@ const PaintingList: React.FC = () => {
     <div className={styles.mainContainer}>
       <h1>Painting Gallery</h1>
       {loading ? (
-        <p>Loading paintings...</p>
+        <Loader />
       ) : (
         <div className={styles.paintingList}>
           {paintings.map((painting) => (
