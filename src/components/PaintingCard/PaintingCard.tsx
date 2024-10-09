@@ -18,6 +18,7 @@ const PaintingCard: React.FC<PaintingCardProps> = ({
   artist,
   label,
 }) => {
+  const fallbackImagePath = "/default_image.jpg";
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   useEffect(() => {
@@ -44,7 +45,16 @@ const PaintingCard: React.FC<PaintingCardProps> = ({
 
   return (
     <div className={styles.paintingCard}>
-      <img src={imageUrl} alt={title} className={styles.paintingImage} />
+      <img
+        src={imageUrl}
+        alt={title}
+        className={styles.paintingImage}
+        onError={(e) => {
+          const target = e.target as HTMLImageElement;
+          target.onerror = null;
+          target.src = fallbackImagePath;
+        }}
+      />
       <div className={styles.paintingInfo}>
         <h4 className={styles.paintingTitle}>{title}</h4>
         <p className={styles.paintingArtist}>{artist}</p>
