@@ -16,11 +16,11 @@ const Pagination: React.FC<PaginationProps> = ({ total, value, onChange }) => {
 
   return (
     <div className={styles.paginationContainer}>
-      {pagination.range.map((pageNumber, index) => {
+      {pagination.range.map((pageNumber) => {
         if (typeof pageNumber === "number") {
           return (
             <button
-              key={index}
+              key={pageNumber}
               className={`${styles.paginationControl} ${
                 pagination.active === pageNumber ? styles.activeControl : ""
               }`}
@@ -30,7 +30,7 @@ const Pagination: React.FC<PaginationProps> = ({ total, value, onChange }) => {
           );
         } else if (pageNumber === "dots") {
           return (
-            <span key={index} className={styles.dots}>
+            <span key={`dots-${Math.random()}`} className={styles.dots}>
               ...
             </span>
           );

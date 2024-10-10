@@ -4,7 +4,7 @@ import { ReactComponent as AddToFavoriteIcon } from "@assets/icons/add-to-favori
 import { ReactComponent as InFavoriteIcon } from "@assets/icons/in-favorite-icon.svg";
 import styles from "./PaintingCard.module.css";
 
-interface PaintingCardProps {
+interface Painting {
   id: number;
   imageUrl: string;
   title: string;
@@ -12,13 +12,7 @@ interface PaintingCardProps {
   label: string;
 }
 
-const PaintingCard: React.FC<PaintingCardProps> = ({
-  id,
-  imageUrl,
-  title,
-  artist,
-  label,
-}) => {
+const PaintingCard: React.FC<Painting> = ({ id, imageUrl, title, artist, label }) => {
   const fallbackImagePath = "/default_image.jpg";
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -27,18 +21,36 @@ const PaintingCard: React.FC<PaintingCardProps> = ({
     const storedFavorites = localStorage.getItem("favorites");
     if (storedFavorites) {
       const favorites = JSON.parse(storedFavorites);
-      setIsFavorite(favorites.includes(id));
+      const isPaintingInFavorites = favorites.some(
+        (favorite: { id: number }) => favorite.id === id
+      );
+      setIsFavorite(isPaintingInFavorites);
     }
   }, [id]);
+
+  // const handleFavoriteClick = () => {
+  //   const storedFavorites = localStorage.getItem("favorites");
+  //   let favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+
+  //   if (isFavorite) {
+  //     favorites = favorites.filter((favoriteId: number) => favoriteId !== id);
+  //   } else {
+  //     favorites.push(id);
+  //   }
+
+  //   localStorage.setItem("favorites", JSON.stringify(favorites));
+  //   setIsFavorite(!isFavorite);
+  // };
 
   const handleFavoriteClick = () => {
     const storedFavorites = localStorage.getItem("favorites");
     let favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
 
     if (isFavorite) {
-      favorites = favorites.filter((favoriteId: number) => favoriteId !== id);
+      favorites = favorites.filter((favorite: Painting) => favorite.id !== id);
     } else {
-      favorites.push(id);
+      const newFavorite = { id, imageUrl, title, artist, label };
+      favorites.push(newFavorite);
     }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
