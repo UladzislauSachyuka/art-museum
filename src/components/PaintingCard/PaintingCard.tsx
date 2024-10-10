@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as AddToFavoriteIcon } from "@assets/icons/add-to-favorite-icon.svg";
 import { ReactComponent as InFavoriteIcon } from "@assets/icons/in-favorite-icon.svg";
 import styles from "./PaintingCard.module.css";
@@ -20,6 +21,7 @@ const PaintingCard: React.FC<PaintingCardProps> = ({
 }) => {
   const fallbackImagePath = "/default_image.jpg";
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
@@ -43,6 +45,10 @@ const PaintingCard: React.FC<PaintingCardProps> = ({
     setIsFavorite(!isFavorite);
   };
 
+  const handleImageClick = () => {
+    navigate(`/painting/${id}`);
+  };
+
   return (
     <div className={styles.paintingCard}>
       <img
@@ -54,6 +60,7 @@ const PaintingCard: React.FC<PaintingCardProps> = ({
           target.onerror = null;
           target.src = fallbackImagePath;
         }}
+        onClick={handleImageClick}
       />
       <div className={styles.paintingInfo}>
         <h4 className={styles.paintingTitle}>{title}</h4>

@@ -14,10 +14,6 @@
   transition: opacity 0.3s ease;
 }
 
-.loading {
-  opacity: 0.3;
-}
-
 .loaderOverlay {
   position: fixed;
   top: 0;
