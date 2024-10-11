@@ -28,20 +28,6 @@ const PaintingCard: React.FC<Painting> = ({ id, imageUrl, title, artist, label }
     }
   }, [id]);
 
-  // const handleFavoriteClick = () => {
-  //   const storedFavorites = localStorage.getItem("favorites");
-  //   let favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
-
-  //   if (isFavorite) {
-  //     favorites = favorites.filter((favoriteId: number) => favoriteId !== id);
-  //   } else {
-  //     favorites.push(id);
-  //   }
-
-  //   localStorage.setItem("favorites", JSON.stringify(favorites));
-  //   setIsFavorite(!isFavorite);
-  // };
-
   const handleFavoriteClick = () => {
     const storedFavorites = localStorage.getItem("favorites");
     let favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
