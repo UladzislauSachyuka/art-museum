@@ -32,6 +32,8 @@
 }
 
 .paintingTitle {
+  min-height: 0;
+  min-width: 0;
   margin: 20px 0 10px;
   padding: 0;
   font-family: "LexendDeca-Medium";
@@ -61,4 +63,16 @@
 .link {
   text-decoration: none;
   color: inherit;
+}
+
+@media (max-width: 480px) {
+  .paintingTitle {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 360px) {
+  .paintingTitle {
+    max-width: 260px;
+  }
 }

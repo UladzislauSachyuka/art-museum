@@ -61,7 +61,7 @@ const PaintingCard: React.FC<Painting> = ({ id, imageUrl, title, artist, label }
         onClick={handleImageClick}
       />
       <div className={styles.paintingInfo}>
-        <h4 className={styles.paintingTitle}>{title}</h4>
+        <span className={styles.paintingTitle}>{title}</span>
         <p className={styles.paintingArtist}>{artist}</p>
         <span className={styles.paintingLabel}>{label}</span>
       </div>

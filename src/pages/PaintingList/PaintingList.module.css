@@ -26,3 +26,18 @@
   align-items: center;
   z-index: 10;
 }
+
+@media (max-width: 480px) {
+  .mainContainer {
+    padding: 20px;
+  }
+
+  .paintingList {
+    width: 100%;
+    grid-template-columns: 1fr;
+    row-gap: 20px; 
+    column-gap: 0;
+    margin: 20px 0;
+    box-sizing: border-box;
+  }
+}

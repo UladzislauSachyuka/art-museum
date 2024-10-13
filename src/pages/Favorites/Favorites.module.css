@@ -35,3 +35,14 @@
   box-sizing: border-box;
   background-color: var(--white-color);
 }
+
+@media (max-width: 480px) {
+  .gridContainer {
+    width: 100%;
+    grid-template-columns: 1fr;
+    row-gap: 20px; 
+    column-gap: 0;
+    margin: 20px 0;
+    box-sizing: border-box;
+  }
+}

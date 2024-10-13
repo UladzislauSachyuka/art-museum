@@ -40,3 +40,20 @@
   margin-top: 5px;
   text-align: left;
 }
+
+@media (max-width: 480px) {
+  .formContainer {
+    margin: 0 0 25px;
+  }
+
+  .searchInput {
+    width: 50vw;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .errorMessage {
+    bottom: -45px;
+  }
+
+}
