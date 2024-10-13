@@ -1,0 +1,29 @@
+.sortContainer {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.sortLabel {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.sortSelect {
+  padding: 8px 12px; 
+  border: 1px solid var(--gray-color); 
+  border-radius: 4px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: border-color 0.3s ease; 
+}
+
+.sortSelect:hover {
+  border-color: var(--blue-color); 
+}
+
+.sortSelect:focus {
+  outline: none; 
+  border-color: var(--blue-color); 
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}

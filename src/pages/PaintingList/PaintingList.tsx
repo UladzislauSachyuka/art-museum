@@ -4,6 +4,7 @@ import PaintingCard from "components/PaintingCard";
 import Loader from "components/Loader";
 import Pagination from "components/Pagination";
 import PaintingSearchForm from "components/SearchForm";
+import Sort from "components/Sort";
 import styles from "./PaintingList.module.css";
 
 export const PAINTINGS_PER_PAGE = 2;
@@ -23,6 +24,7 @@ const PaintingList: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
   const [noData, setNoData] = useState(false);
+  const [sortCriteria, setSortCriteria] = useState<string>("title.keyword");
 
   const fetchPaintings = async (page: number) => {
     setLoading(true);
@@ -40,11 +42,11 @@ const PaintingList: React.FC = () => {
     setLoading(false);
   };
 
-  const fetchSearchedPaintings = async (search: string, page: number) => {
+  const fetchSearchedPaintings = async (search: string, page: number, sort: string) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://api.artic.edu/api/v1/artworks/search?query[match][title]=${search}&fields=id,image_id,title,artist_title,is_public_domain&page=${page}&limit=${PAINTINGS_PER_PAGE}`
+        `https://api.artic.edu/api/v1/artworks/search?query[match][title]=${search}&fields=id,image_id,title,artist_title,is_public_domain&page=${page}&limit=${PAINTINGS_PER_PAGE}&sort=${sort}`
       );
       const fetchedResults = response.data.data;
       setPaintings(fetchedResults);
@@ -58,11 +60,11 @@ const PaintingList: React.FC = () => {
 
   useEffect(() => {
     if (searchTerm) {
-      fetchSearchedPaintings(searchTerm, currentPage);
+      fetchSearchedPaintings(searchTerm, currentPage, sortCriteria);
     } else {
       fetchPaintings(currentPage);
     }
-  }, [currentPage, searchTerm]);
+  }, [currentPage, searchTerm, sortCriteria]);
 
   return (
     <div className={styles.mainContainer}>
@@ -78,6 +80,10 @@ const PaintingList: React.FC = () => {
             setSearchTerm={setSearchTerm}
             setCurrentPage={setCurrentPage}
           />
+
+          {searchTerm && (
+            <Sort criteria={sortCriteria} setSortCriteria={setSortCriteria} />
+          )}
 
           {noData ? (
             <h1>No paintings found</h1>

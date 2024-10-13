@@ -10,7 +10,7 @@ interface PaginationProps {
 const Pagination: React.FC<PaginationProps> = ({ total, value, onChange }) => {
   const pagination = usePagination({
     total,
-    initialPage: value,
+    page: value,
     onChange: (page: number) => onChange(page),
   });
 
