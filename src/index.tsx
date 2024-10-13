@@ -5,6 +5,7 @@ import "./index.css";
 import PaintingList from "./pages/PaintingList";
 import Favorites from "./pages/Favorites";
 import Details from "./pages/DetailsPage";
+import NotFoundPage from "pages/NotFoundPage";
 import ErrorBoundaryLayout from "components/ErrorBoundaryLayout";
 
 const router = createBrowserRouter([
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       { path: "/", element: <PaintingList /> },
       { path: "/favorites", element: <Favorites /> },
       { path: "painting/:id", element: <Details /> },
+      { path: "*", element: <NotFoundPage /> },
     ],
   },
 ]);
