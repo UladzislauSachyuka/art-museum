@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import PaintingCard from "components/PaintingCard";
-import Pagination from "components/Pagination";
+import PaintingCard from "@components/PaintingCard";
+import Pagination from "@components/Pagination";
 import styles from "./Favorites.module.css";
 
 interface Painting {

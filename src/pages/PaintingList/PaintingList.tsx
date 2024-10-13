@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import PaintingCard from "components/PaintingCard";
-import Loader from "components/Loader";
-import Pagination from "components/Pagination";
-import PaintingSearchForm from "components/SearchForm";
-import Sort from "components/Sort";
+import PaintingCard from "@components/PaintingCard";
+import Loader from "@components/Loader";
+import Pagination from "@components/Pagination";
+import PaintingSearchForm from "@components/SearchForm";
+import Sort from "@components/Sort";
 import styles from "./PaintingList.module.css";
 
 export const PAINTINGS_PER_PAGE = 2;
