@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
-import PaintingCard from "@components/PaintingCard";
 import Pagination from "@components/Pagination";
+import PaintingCard from "@components/PaintingCard";
+import { ITEMS_PER_PAGE } from "@constants/constants";
+import { useEffect, useState } from "react";
+
 import styles from "./Favorites.module.css";
 
 interface Painting {
@@ -10,8 +12,6 @@ interface Painting {
   artist: string;
   label: string;
 }
-
-const ITEMS_PER_PAGE = 6;
 
 const Favorites: React.FC = () => {
   const [favorites, setFavorites] = useState<Painting[]>([]);

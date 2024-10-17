@@ -21,6 +21,10 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   moduleNameMapper: {
     "^@assets/(.*)$": "<rootDir>/src/assets/$1",
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
+    "^@constants/(.*)$": "<rootDir>/src/constants/$1",
+    "^@api/(.*)$": "<rootDir>/src/api/$1",
     "\\.svg$": "<rootDir>/__mocks__/svgMock.js",
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
 };

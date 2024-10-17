@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Loader from "components/Loader";
 import { ReactComponent as AddToFavoriteIcon } from "@assets/icons/add-to-favorite-icon.svg";
 import { ReactComponent as InFavoriteIcon } from "@assets/icons/in-favorite-icon.svg";
+import axios from "axios";
+import Loader from "components/Loader";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import styles from "./PaintingDetails.module.css";
 
 interface Painting {

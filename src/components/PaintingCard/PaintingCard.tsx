@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { ReactComponent as AddToFavoriteIcon } from "@assets/icons/add-to-favorite-icon.svg";
 import { ReactComponent as InFavoriteIcon } from "@assets/icons/in-favorite-icon.svg";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./PaintingCard.module.css";
 
 interface Painting {

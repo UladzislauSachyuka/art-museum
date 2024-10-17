@@ -1,4 +1,5 @@
 import { usePagination } from "@mantine/hooks";
+
 import styles from "./Pagination.module.css";
 
 interface PaginationProps {

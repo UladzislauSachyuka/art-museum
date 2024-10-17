@@ -1,12 +1,14 @@
+import "./index.css";
+
+import ErrorBoundaryLayout from "components/ErrorBoundaryLayout";
+import NotFoundPage from "pages/NotFoundPage";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
-import PaintingList from "./pages/PaintingList";
-import Favorites from "./pages/Favorites";
+
 import Details from "./pages/DetailsPage";
-import NotFoundPage from "pages/NotFoundPage";
-import ErrorBoundaryLayout from "components/ErrorBoundaryLayout";
+import Favorites from "./pages/Favorites";
+import PaintingList from "./pages/PaintingList";
 
 const router = createBrowserRouter([
   {

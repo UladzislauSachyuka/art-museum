@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import PaintingCard from "@components/PaintingCard";
 import Loader from "@components/Loader";
 import Pagination from "@components/Pagination";
+import PaintingCard from "@components/PaintingCard";
 import PaintingSearchForm from "@components/SearchForm";
 import Sort from "@components/Sort";
-import styles from "./PaintingList.module.css";
+import { PAINTINGS_PER_PAGE } from "@constants/constants";
+import { useEffect, useState } from "react";
 
-export const PAINTINGS_PER_PAGE = 2;
+import { getPaintings, getSearchedPaintings } from "../../api/api";
+import styles from "./PaintingList.module.css";
 
 interface Painting {
   id: number;
@@ -29,12 +29,10 @@ const PaintingList: React.FC = () => {
   const fetchPaintings = async (page: number) => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `https://api.artic.edu/api/v1/artworks?page=${page}&limit=${PAINTINGS_PER_PAGE}&fields=id,image_id,title,artist_title,is_public_domain`
-      );
-      const fetchedResults = response.data.data;
+      const response = await getPaintings(page, PAINTINGS_PER_PAGE);
+      const fetchedResults = response.data;
       setPaintings(fetchedResults);
-      setTotalPages(Math.ceil(response.data.pagination.total / PAINTINGS_PER_PAGE));
+      setTotalPages(Math.ceil(response.pagination.total / PAINTINGS_PER_PAGE));
       setNoData(fetchedResults.length === 0);
     } catch (error) {
       console.error("Error fetching paintings:", error);
@@ -45,12 +43,10 @@ const PaintingList: React.FC = () => {
   const fetchSearchedPaintings = async (search: string, page: number, sort: string) => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `https://api.artic.edu/api/v1/artworks/search?query[match][title]=${search}&fields=id,image_id,title,artist_title,is_public_domain&page=${page}&limit=${PAINTINGS_PER_PAGE}&sort=${sort}`
-      );
-      const fetchedResults = response.data.data;
+      const response = await getSearchedPaintings(search, page, sort, PAINTINGS_PER_PAGE);
+      const fetchedResults = response.data;
       setPaintings(fetchedResults);
-      setTotalPages(Math.ceil(response.data.pagination.total / PAINTINGS_PER_PAGE));
+      setTotalPages(Math.ceil(response.pagination.total / PAINTINGS_PER_PAGE));
       setNoData(fetchedResults.length === 0);
     } catch (error) {
       console.error("Error fetching searched paintings:", error);
