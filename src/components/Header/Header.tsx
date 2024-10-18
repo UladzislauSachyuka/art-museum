@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "@assets/icons/museum-logo.svg";
 import { ReactComponent as FavoriteIcon } from "@assets/icons/bookmark.svg";
 import { ReactComponent as HomeIcon } from "@assets/icons/home.svg";
 import { ReactComponent as BurgerIcon } from "@assets/icons/menu.svg";
+import { ReactComponent as Logo } from "@assets/icons/museum-logo.svg";
 import useBurgerMenu from "hooks/useBurgerMenu";
-import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+
+import styles from "./Header.module.css";
 
 const Header = () => {
   const location = useLocation();

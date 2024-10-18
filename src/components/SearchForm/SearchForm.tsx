@@ -1,22 +1,22 @@
-import { useForm } from "react-hook-form";
+import { ReactComponent as SearchIcon } from "@assets/icons/search.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { SearchFormProps } from "@types";
 import { debounce } from "lodash";
 import { useCallback } from "react";
-import { ReactComponent as SearchIcon } from "@assets/icons/search.svg";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+
 import styles from "./SearchForm.module.css";
 
 const schema = yup.object().shape({
   search: yup
     .string()
+    .trim()
+    .strict()
     .min(3, "Search term must be at least 3 characters")
-    .required("Search term is required"),
+    .required("Search term is required")
+    .matches(/\S/, "Search term cannot be just spaces"),
 });
-
-interface SearchFormProps {
-  setSearchTerm: (term: string) => void;
-  setCurrentPage: (page: number) => void;
-}
 
 const SearchForm: React.FC<SearchFormProps> = ({ setSearchTerm, setCurrentPage }) => {
   const {
@@ -47,7 +47,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ setSearchTerm, setCurrentPage }
           placeholder="Search Art, Artist, Work..."
           {...register("search")}
         />
-        <SearchIcon className={styles.searchIcon} />
+        <SearchIcon className={styles.searchIcon} onClick={handleSubmit(onSubmit)} />
         {errors.search && <p className={styles.errorMessage}>{errors.search.message}</p>}
       </form>
     </div>

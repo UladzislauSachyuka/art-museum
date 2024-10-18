@@ -3,9 +3,12 @@
     "baseUrl": "src",
     "paths": {
       "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@api": ["api"],
+      "@types": ["types"],
     },
-    "target": "ES6",
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -32,5 +35,4 @@
     "jest",
     "@testing-library/jest-dom"
   ],
-  "skipLibCheck": true
 }

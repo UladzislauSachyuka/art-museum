@@ -1,11 +1,7 @@
 import { usePagination } from "@mantine/hooks";
-import styles from "./Pagination.module.css";
+import { PaginationProps } from "@types";
 
-interface PaginationProps {
-  total: number;
-  value: number;
-  onChange: (page: number) => void;
-}
+import styles from "./Pagination.module.css";
 
 const Pagination: React.FC<PaginationProps> = ({ total, value, onChange }) => {
   const pagination = usePagination({

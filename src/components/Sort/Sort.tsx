@@ -1,9 +1,6 @@
-import styles from "./Sort.module.css";
+import { SortProps } from "@types";
 
-interface SortProps {
-  criteria: string;
-  setSortCriteria: (criteria: string) => void;
-}
+import styles from "./Sort.module.css";
 
 const Sort: React.FC<SortProps> = ({ criteria, setSortCriteria }) => {
   return (
