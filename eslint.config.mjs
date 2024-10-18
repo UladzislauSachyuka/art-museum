@@ -10,6 +10,7 @@ import prettier from "eslint-plugin-prettier";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,6 +38,10 @@ export default [
 
     languageOptions: {
       parser: tsParser,
+      globals: {
+        ...globals.es2021,
+        ...globals.node,
+      },
     },
 
     settings: {
@@ -53,6 +58,8 @@ export default [
       "simple-import-sort/exports": "error",
       "sort-imports": "off",
       "import/order": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "no-undef": "off",
     },
   },
 ];

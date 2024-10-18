@@ -1,24 +1,17 @@
+import { getPaintings, getSearchedPaintings } from "@api";
 import Loader from "@components/Loader";
 import Pagination from "@components/Pagination";
 import PaintingCard from "@components/PaintingCard";
 import PaintingSearchForm from "@components/SearchForm";
 import Sort from "@components/Sort";
 import { PAINTINGS_PER_PAGE } from "@constants/constants";
+import { FetchPainting } from "@types";
 import { useEffect, useState } from "react";
 
-import { getPaintings, getSearchedPaintings } from "../../api/api";
 import styles from "./PaintingList.module.css";
 
-interface Painting {
-  id: number;
-  title: string;
-  artist_title: string | null;
-  image_id: string;
-  is_public_domain: boolean;
-}
-
 const PaintingList: React.FC = () => {
-  const [paintings, setPaintings] = useState<Painting[]>([]);
+  const [paintings, setPaintings] = useState<FetchPainting[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);

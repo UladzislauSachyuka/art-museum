@@ -1,5 +1,6 @@
 import { ReactComponent as AddToFavoriteIcon } from "@assets/icons/add-to-favorite-icon.svg";
 import { ReactComponent as InFavoriteIcon } from "@assets/icons/in-favorite-icon.svg";
+import { Details } from "@types";
 import axios from "axios";
 import Loader from "components/Loader";
 import { useEffect, useState } from "react";
@@ -7,20 +8,7 @@ import { useParams } from "react-router-dom";
 
 import styles from "./PaintingDetails.module.css";
 
-interface Painting {
-  id: number;
-  title: string;
-  artist_display: string;
-  artist_title: string;
-  image_id: string;
-  years: string;
-  dimensions: string;
-  credit_line: string;
-  place_of_origin: string;
-  is_on_view: boolean;
-}
-
-const defaultPainting: Painting = {
+const defaultPainting: Details = {
   id: 0,
   title: "Unknown",
   artist_display: "",
@@ -35,7 +23,7 @@ const defaultPainting: Painting = {
 
 const PaintingDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [painting, setPainting] = useState<Painting>(defaultPainting);
+  const [painting, setPainting] = useState<Details>(defaultPainting);
   const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const fallbackImagePath = "/default_image.jpg";

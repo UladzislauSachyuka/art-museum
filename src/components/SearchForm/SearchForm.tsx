@@ -1,5 +1,6 @@
 import { ReactComponent as SearchIcon } from "@assets/icons/search.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { SearchFormProps } from "@types";
 import { debounce } from "lodash";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
@@ -16,11 +17,6 @@ const schema = yup.object().shape({
     .required("Search term is required")
     .matches(/\S/, "Search term cannot be just spaces"),
 });
-
-interface SearchFormProps {
-  setSearchTerm: (term: string) => void;
-  setCurrentPage: (page: number) => void;
-}
 
 const SearchForm: React.FC<SearchFormProps> = ({ setSearchTerm, setCurrentPage }) => {
   const {
